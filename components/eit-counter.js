@@ -1,4 +1,6 @@
 import { LitElement, html, css } from "lit";
+import { WiredButton } from 'wired-elements/lib/wired-button.js';
+import { WiredInput } from 'wired-elements/lib/wired-input.js';
 
 export class MyCounter extends LitElement {
   static styles = [
@@ -22,9 +24,13 @@ export class MyCounter extends LitElement {
             font-size:3em;
         }
       }
-
+      wired-button{
+        background-color:blue;
+      }
       input{
-        width:30px
+        width:30px;
+        font-size:1.5em;
+        padding:0.5em;
       }
     `,
   ];
@@ -46,18 +52,22 @@ export class MyCounter extends LitElement {
       <p>Mi <b>Contador</b>!!!!</p>
       <h3 class="contador">${this.counter}</h3>
       <p>
-        <input id="quantity" type="text">
+        <wired-input id="quantity" type="number" value="1">
       </p>
-      <button @click=${this.increment}>+ 1</button>
-      <button @click=${this.decrement}>- 1</button>
+      
+      <wired-button elevation="3" outline @click=${this.increment}>Incrementar</wired-button>
+      <wired-button elevation="3" outline @click=${this.decrement}>Decrementar</wired-button>
+      
     `;
   }
 
     increment(){
-        this.counter++;
+        let quantity = this.shadowRoot.getElementById('quantity').value
+        this.counter += parseInt(quantity);
     }
 
     decrement(){
+        let quantity = this.shadowRoot.getElementById('quantity').value
         this.counter--;
     }
 }
