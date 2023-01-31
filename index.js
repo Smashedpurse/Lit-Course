@@ -1,1 +1,1 @@
-import "./components/my-counter"
+import "./components/eit-counter";
