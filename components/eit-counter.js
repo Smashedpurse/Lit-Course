@@ -40,6 +40,9 @@ export class MyCounter extends LitElement {
       .restart{
         background-color:yellow;
       }
+      .new{
+        background-color:green;
+      }
       wired-card{
         margin:1em;
         padding:1em;
@@ -81,10 +84,14 @@ export class MyCounter extends LitElement {
       <wired-button elevation="10" outline @click=${this.increment} class="increment">Incrementar</wired-button>
       <wired-button elevation="3" outline @click=${this.decrement} class="decrement">Decrementar</wired-button>
       <wired-button elevation="3" outline @click=${this.restart} class="restart">Reiniciar</wired-button>
-  </wired-card>
+      </wired-card>
+      <wired-button elevation="3" outline @click=${this.createCounter} class="new">Nuevo Contador</wired-button>
     `;
   }
 
+  createCounter(){
+    getElementById("counter").counter=0;
+  }
 
     doChangeQuantity(e){
         this.quantity=e.detail.value;
